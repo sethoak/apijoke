@@ -1,4 +1,18 @@
-import data from "./data.js";
-import dom from "./dom.js";
+//get a joke and it it on the DOM
 
-data.getNumberTrivia().then(triviaResponse => dom.printToDom(triviaResponse));
+const data = {
+    getNumberTrivia() {
+      return fetch("https://icanhazdadjoke.com/", {
+          method: "GET",
+          headers: {
+              "Accept": "application/json"
+          }
+      })
+  
+      .then(response => response.json())
+      .then (paredResult => {
+          console.log("joke", parsedResult);
+          createjokediv (paredResult, joke);
+      })
+
+      
